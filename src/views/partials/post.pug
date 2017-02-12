@@ -1,0 +1,10 @@
+article.post
+    header
+        span.user-name(data-bind="text: UserName")
+        span.date(data-bind="text: DateTime") 
+        span.post-id(data-bind="text: PostNumber")
+    section.body
+        section.image
+            a(href="#" data-bind="text: ImageName")
+            img(data-bind="attr:{src: ImageSource}")
+        section.text(data-bind="html: message")

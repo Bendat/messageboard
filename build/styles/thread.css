@@ -1,0 +1,70 @@
+section.thread {
+  display: block;
+  width: 100%;
+  margin: 1em 0.5em 0 0;
+  color: #3d405b;
+}
+section.thread article {
+  display: block;
+  width: 75%;
+  max-width: 80em;
+}
+section.thread article header {
+  display: inline-block;
+  width: 40%;
+  height: 1.5em;
+}
+section.thread article header span.user-name {
+  color: #81b29a;
+  font-weight: bold;
+}
+section.thread article section.body section.image {
+  width: 10em;
+  height: 10em;
+  top: 0;
+  left: 0;
+  position: relative;
+  clear: both;
+}
+section.thread article section.body section.image img {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+section.thread article:not(.root-post) {
+  background: #f7e3c1;
+  margin-left: 0.5em;
+  padding: 0.15em 0.15em 0.3em 0.15em;
+  border-right: 1px;
+  border-bottom: 1px;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-color: #f0c2b6;
+  border-style: solid;
+  margin-bottom: 0.5em;
+}
+section.thread article:not(.root-post) section.body {
+  display: inline-flex;
+}
+section.thread article:not(.root-post) section.body section.text {
+  width: auto;
+  max-width: 70em;
+  margin-left: 0.5em;
+}
+section.thread article.root-post {
+  height: 12em;
+}
+section.thread article.root-post header {
+  margin-left: 11.5em;
+}
+section.thread article.root-post section.body {
+  display: inline-flex;
+  position: absolute;
+  left: 0.5em;
+}
+section.thread article.root-post section.body section.text {
+  margin-left: 1em;
+  margin-top: 1.3em;
+  width: auto;
+  max-width: 70em;
+}

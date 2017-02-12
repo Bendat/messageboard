@@ -1,0 +1,7 @@
+form.message-form#draggable-message-form
+    input.hidden-input(name="parent" data-bing="attr:{value: currentThread.id}")
+    fieldset
+        legend Post a Message
+        textarea.message-field(name="message")
+        input(type="file" name="file")
+    input(type="submit" value="Post")

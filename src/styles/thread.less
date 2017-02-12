@@ -1,0 +1,75 @@
+section.thread{
+    display: block;
+    width: 100%;
+    margin: 1em 0.5em 0 0;
+    color: #3d405b;
+    article{
+        display: block;
+        width: 75%;
+        max-width: 80em;
+        header{
+            display: inline-block;
+            width: 40%;
+            height: 1.5em;
+            span{
+                &.user-name{
+                    color: #81b29a;
+                    font-weight: bold;
+                }
+            }
+        }
+        section.body{
+            section.image{
+                width: 10em;
+                height: 10em;
+                top: 0;
+                left: 0;
+                position: relative;
+                clear: both;
+                img{
+                    display: inline-block;
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+    article:not(.root-post){
+        background: #f7e3c1;
+        margin-left: 0.5em;
+        padding: 0.15em 0.15em 0.3em 0.15em;
+        border-right: 1px;
+        border-bottom: 1px;
+        border-top: 0px;
+        border-bottom: 0px;
+        border-color: #f0c2b6;
+        border-style: solid;
+        margin-bottom: 0.5em;
+        section.body{
+            display: inline-flex;
+            section.text{
+                width: auto;
+                max-width: 70em;
+                margin-left: 0.5em;
+            }
+        }
+    }
+    article.root-post{
+        height: 12em;
+        header{
+            margin-left: 11.5em;
+        }
+        section.body{
+            display: inline-flex;
+            position: absolute;
+            left: 0.5em;
+
+            section.text{
+                margin-left: 1em;
+                margin-top: 1.3em;
+                width: auto;
+                max-width: 70em;
+            }
+        }  
+    }
+}

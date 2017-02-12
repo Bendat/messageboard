@@ -1,0 +1,22 @@
+{
+  "name": "MessageBoard",
+  "authors": [
+    "Bendat <benaherne@outlook.ie>"
+  ],
+  "description": "A simple message/imageboard style forum",
+  "main": "index.php",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "^3.4.1",
+    "requirejs": "^2.3.2"
+  }
+}

@@ -1,0 +1,55 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="x-ua-compatible" content="ie=edge")
+        meta(e="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet" type="text/css" href="../build/styles/theme.css")
+        link( href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet")
+        script(src="../bower_components/jquery/dist/jquery.min.js")
+        script(src="../externals/jquery-ui.min.js")
+        script(src="../bower_components/jquery-form/jquery.form.js")
+        title MessageBoard
+    body
+        include ../partials/headview.pug
+        include ../partials/postform.pug
+        div#body()
+            section.thread
+                article.root-post
+                    header
+                        span.user-name UserName 
+                        span 01/01/17 00:45 
+                        span 123456
+                    section.body
+                        section.image
+                            a(href="#") 0001.jpg
+                            img(src="../resources/images/0001.jpg")
+                        section.text
+                            p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                article
+                    header
+                        span.user-name AlexKingston 
+                        span 01/01/17 00:45 
+                        span 123456
+                    section.body
+                        section.image
+                            a(href="#") 0001.jpg
+                            img(src="../resources/images/0001.jpg")
+                        section.text
+                            p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+        script(src="../bower_components/requirejs/require.js")
+        script(src="../build/require-config.js")
+        script.
+            require(["../build/viewmodels/boards/board"]);
+            $("#draggable-message-form").draggable({containment: "body"});
+            let urlTo = window.content.location.href + "/message";
+            console.log(urlTo);
+            $(".message-form")
+                .ajaxForm({
+                    url: urlTo, 
+                    type: "post",
+                    context: this,
+                    data: $(this).serialize()
+                });

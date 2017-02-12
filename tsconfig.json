@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "outDir": "./build/",
+
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "amd",
+        "target": "es6"
+    },
+    "include": [
+        "./src/**/*.ts"
+    ]
+}
