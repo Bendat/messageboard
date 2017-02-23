@@ -1,8 +1,10 @@
 <?php
 require "autoload.php";
-
+/**
+*  A singleton providing functionality for storing and retrieving messages/posts.
+*/
 class Posts{
-    public $config;
+    private $config;
     private $purifier;
 
     /**

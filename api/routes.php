@@ -63,7 +63,7 @@ $klein->with('/board', function () use ($klein) {
     });
 
     $klein->respond("GET", "/[a:board][/thread]?/[i:threadId]?/boardList.json", function($req, $res, $ser){
-        return Boards::instance()->getBoardsList($req->board);
+        return Boards::instance()->getBoardsList();
     });
 
     $klein->respond("GET", "/[a:board]/threads.json", function($req, $res, $ser){

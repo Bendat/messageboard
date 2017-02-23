@@ -1,6 +1,9 @@
 <?php
 require "autoload.php";
 
+/**
+*  A singleton providing functionality for storing and retrieving threads and posts associated with a board.
+*/
 class Boards{
     /**
     * Provides access to the singleton Boards object instance.
@@ -18,7 +21,11 @@ class Boards{
     private function __construct(){
     }
 
-    public function getBoardsList($name){
+    /**
+    * Gets the list of board names.
+    * @return string The boards list as a JSON string.
+    */
+    public function getBoardsList(){
         return json_encode(
             Database::instance()->db
                 ->table("boards")
@@ -27,7 +34,11 @@ class Boards{
                 ->get()
         );
     }
-
+    /**
+    * Gets the parent threads of the provided board, and the last five posts associated with each.
+    * @param string $board The board to get thread blurbs for.
+    * @return string The threads and their blurbs, represented as a JSON string.
+    */
     public function getThreadBlurbs($board){
         $res = Database::instance()
                 ->db

@@ -1,9 +1,12 @@
-CREATE TABLE `messageboard`.`messages` (
-     `id` INT(24) NOT NULL , 
-     `parent_id` INT(24) NULL DEFAULT NULL , 
-     `user_id` INT(24) NULL DEFAULT NULL , 
-     `title` VARCHAR(128) NULL DEFAULT NULL , 
-     `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , 
-     `text` TEXT NOT NULL , `image_id` INT(24) NOT NULL , 
-     PRIMARY KEY (`id`)) 
-ENGINE = MyISAM;
+CREATE TABLE `messages` (
+  `id` int(24) NOT NULL,
+  `parent_id` int(24) DEFAULT NULL,
+  `user_id` int(24) DEFAULT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `timestamp` datetime DEFAULT CURRENT_TIMESTAMP,
+  `text` text NOT NULL,
+  `image_id` varchar(32) DEFAULT NULL,
+  `image_ext` varchar(6) NOT NULL,
+  `image_name` varchar(256) DEFAULT NULL,
+  `board` varchar(24) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

@@ -1,6 +1,9 @@
 import * as ko from "knockout";
 import {ThreadViewModel} from "thread";
 
+/**
+ * A object representing an message/post that a user has submitted.
+ */
 export class Post{
     public id: KnockoutObservable<number>;
     public parentId: KnockoutObservable<number>;
@@ -16,6 +19,20 @@ export class Post{
 
     private parent: ThreadViewModel;
 
+    /**
+     * Creates a new Post instance.
+     * @param {Object} data A JSON object containing the Posts information.
+     * @param {number|string} data.id The id of the post.
+     * @param {number|string|null} data.parent_id The id of the thread/parent post.
+     * @param {number|string} data.user_id The id of the user who created this post.
+     * @param {string} data.timestamp The timestamp of when the post was created.
+     * @param {string} data.text The body text of the post.
+     * @param {string|null} data.image_id The filename the image is stored with.
+     * @param {string|null} data.image_name The original name of the file (for display purposes).
+     * @param {string|null} data.image_ext The file extension of the image.
+     * @param {string} data.board The board this post is associated with.
+     * @param {ThreadViewModel} parent The parent object of this post.
+     */
     constructor(data: any, parent: ThreadViewModel){
         this.parent = parent;
         this.id = ko.observable(data["id"]);
@@ -30,10 +47,12 @@ export class Post{
         this.imageLink = ko.observable(this.imageId()+"."+this.imageExt());
     }
 
+    /* 
+    * Converts reply links ( @123 ) to navigatable links
+    * if a matching post exists.
+    */
     private makeLinks(text: string): string{
-        
         let pattern = /(@)(\d+)/g;
-        let m;
         let res = text.match(pattern);
         if(!res){
             return text;

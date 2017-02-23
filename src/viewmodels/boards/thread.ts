@@ -1,6 +1,11 @@
 import * as ko from "knockout";
 import {Post} from "post";
-
+/**
+ * A viewmodel object representing a thread, a self contained discussion containing messages and images.
+ * @property {KnockoutObservable<number>} id The id of this thread (same as the first post associated with it).
+ * @property {KnockoutObservableArray<Post>} posts An array of Post object to be displayed.
+ * @property {Array<string>} childIds The ids of all children associated with this thread.
+ */
 export class ThreadViewModel{
     private  _id: KnockoutObservable<number>;
     private _posts: KnockoutObservableArray<Post>;

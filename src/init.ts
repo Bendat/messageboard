@@ -39,7 +39,15 @@ $("#cancel").on("click", (e: any)=>{
 });
 
 /* General util functions */
-function cleanUrl(href: string, trail: string){
+
+/**
+ * Removes trailing anchors (#1234) from a url and attaches
+ * a trailing stringe e.g /image.jpg
+ * @param {string} href The url to clean.
+ * @param {string} trail The string to concatenate.
+ * @return {string} The full combined url.
+ */
+function cleanUrl(href: string, trail: string): string{
     let index = href.indexOf("#");
     return index >= 0? href.substring(0, index)+trail: href+trail;
 }
