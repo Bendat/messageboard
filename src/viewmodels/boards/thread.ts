@@ -26,7 +26,7 @@ export class ThreadViewModel{
 
     /**
      * Constructs Post objects from JSON data and stores them.
-     * @param {Object} thread A json object representing the posts.
+     * @param {Object|string} thread A json object or JSON string representing the posts.
      * @param {String} textStatus The Status Code of the request. 
      * @param {Object} jqXJHR a Jquery XMLHttpRequest
      * @return {number} The number of posts in this request.
