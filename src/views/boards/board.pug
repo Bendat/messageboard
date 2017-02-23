@@ -14,42 +14,49 @@ html(lang="en")
     body
         include ../partials/headview.pug
         include ../partials/postform.pug
-        div#body()
-            section.thread
-                article.root-post
-                    header
-                        span.user-name UserName 
-                        span 01/01/17 00:45 
-                        span 123456
-                    section.body
-                        section.image
-                            a(href="#") 0001.jpg
-                            img(src="../resources/images/0001.jpg")
-                        section.text
-                            p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                article
-                    header
-                        span.user-name AlexKingston 
-                        span 01/01/17 00:45 
-                        span 123456
-                    section.body
-                        section.image
-                            a(href="#") 0001.jpg
-                            img(src="../resources/images/0001.jpg")
-                        section.text
-                            p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        div#body(data-bind="foreach: Threads")
+            section.thread-view
+                section.thread#body(data-bind="foreach: posts()")
+                    article(data-bind="css: parentId ? '': 'root-post', attr:{id: id, name: id}")
+                        header
+                            span.user-name UserName 
+                            span(data-bind="text: timestamp") 
+                            span  Post: 
+                            span(data-bind="text: id")
+                            span    
+                            a.reply-link(data-bind="attr: {href: '#'+id()}")  [Reply]
+                        section.body
+                            section.image(data-bind="visible: imageId")
+                                //- a(data-bind="attr: {href: '../../../resources/images/'+image_id+'.'+image_ext}, text: image_name")
+                                img(data-bind="attr: {src: '../resources/images/'+imageLink()}")
+                            section.text(data-bind="html: text")
+            hr
 
         script(src="../bower_components/requirejs/require.js")
         script(src="../build/require-config.js")
-        script.
-            require(["../build/viewmodels/boards/board"]);
-            $("#draggable-message-form").draggable({containment: "body"});
-            let urlTo = window.content.location.href + "/message";
-            console.log(urlTo);
-            $(".message-form")
-                .ajaxForm({
-                    url: urlTo, 
-                    type: "post",
-                    context: this,
-                    data: $(this).serialize()
-                });
+    script(src="../build/init.js")
+    script.
+        var threads;
+        var tvm;
+        var ko;
+        var currentBoard;
+        require(["knockout", "board"], function(ko, board){
+            currentBoard = new board["BoardViewModel"]("Tech", "Technology and IT");
+            $.ajax({
+                url: cleanUrl(url,"/threads.json"),
+                type: "get",
+                dataType: "text",
+                context: currentBoard,
+                success: currentBoard.addBlurbs
+            });
+            $.ajax({
+                url: cleanUrl(url,"/boardList.json"),
+                type: "get",
+                dataType: "text",
+                context: currentBoard,
+                success: currentBoard.addBoardsList
+            });
+            
+            //ko.applyBindings(tvm, $(".thread-view")[0]);
+            ko.applyBindings(currentBoard);
+        });

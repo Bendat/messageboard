@@ -1,15 +1,19 @@
 {
-    "name": "messageboard",
-    "version": "0.0.1",
-    "description": "a simple message/imageboard format forum",
-    "main": "index.js",
-    "scripts": {
-        "test": "test",
-        "build": "tsc && pug src/ --out build/ && gulp less"
-    },
-    "author": "Ben Aherne",
-    "license": "ISC",
-    "dependencies": {
-        "@types/knockout": "^3.4.39"
-    }
+  "name": "messageboard",
+  "version": "0.0.1",
+  "description": "a simple message/imageboard format forum",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "tsc && pug src/ --out build/ && gulp less"
+  },
+  "author": "Ben Aherne",
+  "license": "ISC",
+  "dependencies": {
+    "@types/knockout": "^3.4.39"
+  },
+  "devDependencies": {
+    "@types/jquery": "^2.0.40",
+    "@types/node": "^7.0.5"
+  }
 }

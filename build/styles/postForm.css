@@ -1,44 +1,46 @@
 form.message-form {
-  display: block;
+  background: #67BCDB;
+  display: none;
   min-width: 10em;
   width: auto;
   max-width: 45em;
   min-height: 10em;
   height: auto;
   max-height: 100%;
-  position: absolute;
-  background: #dcba82;
+  position: fixed;
   z-index: 9999;
-  left: 75%;
+  left: 60%;
   top: 25%;
   cursor: move;
+  border-radius: 0.2em 0.2em 0 0;
   -webkit-box-shadow: 10px 10px 28px 11px rgba(0, 0, 0, 0.07);
   -moz-box-shadow: 10px 10px 28px 11px rgba(0, 0, 0, 0.07);
   box-shadow: 10px 10px 28px 11px rgba(0, 0, 0, 0.07);
 }
+form.message-form input.hidden-input {
+  display: none;
+}
 form.message-form fieldset {
+  background: #FFFFFF;
   display: block;
   width: 95%;
   height: 90%;
   min-height: 8em;
-  padding: 0;
-  border: 1px solid #f4f1de;
-  background: #f9e7cc;
+  padding: 0.2em 0 0 0;
+  border: none;
 }
 form.message-form fieldset legend {
-  background: #f9e7cc;
   margin-left: 0.5em;
   color: #3d405b;
-  border: 1px solid #f4f1de;
+  background: #FFFFFF;
 }
 form.message-form fieldset textarea {
   cursor: auto;
   display: block;
-  max-width: 97%;
-  width: 97%;
-  max-height: 98%;
-  min-width: 97%;
-  min-height: 98%;
+  min-width: 20em;
+  width: 25em;
+  min-height: 10em;
+  height: 15em;
 }
 form.message-form fieldset input {
   cursor: auto;
@@ -49,6 +51,38 @@ form.message-form fieldset input {
   min-height: 1.2em;
 }
 form.message-form > input {
+  margin-right: 0.1em;
   cursor: auto;
-  right: 0px;
+  display: block;
+  float: right;
+  position: relative;
+  background: #E44424;
+  background-image: linear-gradient(to bottom, #E44424, #b8402b);
+  border-radius: 0.1em;
+  color: #ffffff;
+  font-size: 1.05em;
+  padding: 0.2em 0.4em;
+  border: 0;
+  text-decoration: none;
+}
+form.message-form > input:hover {
+  background: #A2AB58;
+}
+form.message-form > button {
+  margin-left: 0.1em;
+  cursor: auto;
+  display: block;
+  float: left;
+  position: relative;
+  background: #E44424;
+  background-image: linear-gradient(to bottom, #E44424, #b8402b);
+  border-radius: 0.1em;
+  color: #ffffff;
+  font-size: 1.05em;
+  padding: 0.2em 0.4em;
+  border: 0;
+  text-decoration: none;
+}
+form.message-form > button:hover {
+  background: #A2AB58;
 }

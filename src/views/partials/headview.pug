@@ -1,15 +1,16 @@
-nav.boards-nav
-    ul(data-bind="foreach: Boards")
-        li
-            a( data-bind="text: $data, attr: {href: $data}")
-section#board-header
-    h1(data-bind="text: Title")
-    h2(data-bind="text: Description")
+section#head-view
+    nav.boards-nav
+        ul(data-bind="foreach: Boards()")
+            li
+              a( data-bind="text: $data, attr: {href: $data}")
+    section#board-header
+        h1(data-bind="text: Title")
+        h2(data-bind="text: Description")
 
-section#basic-actions
-    section#post-section
-        a#new-post(href="#") New Thread
-    section#search-section
-        form#searchform
-            input.search(type="text", placeholder="Search")
-            input.submit(type="submit" value="Q")
+    section#basic-actions
+        section#post-section
+            a#new-post(href="#") [New Thread]
+        section#search-section
+            form#searchform
+                input.search(type="text", placeholder="Search")
+                input.submit(type="submit" value="Q")

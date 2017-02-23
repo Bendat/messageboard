@@ -1,0 +1,17 @@
+.button-mixin(@floatdir){
+        cursor: auto;
+        display: block;
+        float: @floatdir;
+        position: relative;
+        background: @base-red;
+        background-image: linear-gradient(to bottom, #E44424, #b8402b);
+        border-radius: 0.1em;
+        color: #ffffff;
+        font-size: 1.05em;
+        padding: 0.2em 0.4em;
+        border: 0;
+        text-decoration: none;
+        &:hover{
+            background: @base-green;
+        }
+}

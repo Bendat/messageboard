@@ -8,14 +8,15 @@ section.thread article {
   display: block;
   width: 75%;
   max-width: 80em;
+  min-height: 4em;
 }
 section.thread article header {
-  display: inline-block;
+  display: block;
   width: 40%;
   height: 1.5em;
 }
 section.thread article header span.user-name {
-  color: #81b29a;
+  color: #67BCDB;
   font-weight: bold;
 }
 section.thread article section.body section.image {
@@ -32,16 +33,24 @@ section.thread article section.body section.image img {
   height: auto;
 }
 section.thread article:not(.root-post) {
-  background: #f7e3c1;
   margin-left: 0.5em;
   padding: 0.15em 0.15em 0.3em 0.15em;
   border-right: 1px;
   border-bottom: 1px;
   border-top: 0px;
   border-bottom: 0px;
-  border-color: #f0c2b6;
+  border-color: #E44424;
   border-style: solid;
   margin-bottom: 0.5em;
+}
+section.thread article:not(.root-post):nth-of-type(1n) {
+  border-color: #67BCDB;
+}
+section.thread article:not(.root-post):nth-of-type(2n) {
+  border-color: #E44424;
+}
+section.thread article:not(.root-post):nth-of-type(3n) {
+  border-color: #A2AB58;
 }
 section.thread article:not(.root-post) section.body {
   display: inline-flex;

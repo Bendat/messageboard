@@ -1,22 +1,35 @@
 import * as ko from "knockout";
-import {Thread} from "../threads/thread";
+import {ThreadViewModel} from "thread";
+
 export class BoardViewModel{
+    public id: KnockoutObservable<string>;
     public Title: KnockoutObservable<string>;
     public Description: KnockoutObservable<string>;
-    public Threads: KnockoutObservableArray<Thread>;
+    public Threads: KnockoutObservableArray<ThreadViewModel>;
     public Boards: KnockoutObservableArray<String>;
 
     constructor(title: string, description: string){
         this.Title = ko.observable(title);
         this.Description = ko.observable(description);
-        this.Boards = ko.observableArray(BoardsNav.Boards);
+        this.Boards = ko.observableArray([]);
+        this.Threads = ko.observableArray([]);
+        this.id = ko.observable(title);
     }
-}
 
-//To be replaced by db call
-class BoardsNav{
-    public static Boards: string[] = [
-        "Any", "Tech", "Prog", "Tv", "Music"
-    ];
+    public addBoardsList(list: any, textStatus: string = null, jqXJHR: any = null){
+        list = JSON.parse(list);
+        for(let board of list){
+            this.Boards.push(board["name"]);
+        }
+    }
+
+    public addBlurbs(list: any, textStatus: string = null, jqXJHR: any = null){
+        list = JSON.parse(list);
+        for(let thread of list){
+            let thr = new ThreadViewModel();
+            thr.addPosts(thread);
+            this.Threads.push(thr);
+        }
+    }
+    
 }
-ko.applyBindings(new BoardViewModel("Tech", "Technology and IT"))

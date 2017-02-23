@@ -1,20 +1,21 @@
 @import "thread.less";
 @import "postForm.less";
+@import "light.less";
 body{
+    scroll-behavior: smooth;
     width: 100%;
     height: 100%;
     display: block;
     padding: 0;
     margin: 0;
-    background: #f4f1de;
+    background: @base-white;
     font-size: 16px;
     font-family: 'Arimo', sans-serif;
     nav.boards-nav{
         display: block;
         width: 100%;
         height: auto;
-        color: #e07a5f;
-        background: #f9e7cc;
+        background: @base-white;
         ul{
             list-style: none;
             display: inline-block;
@@ -24,13 +25,13 @@ body{
                 padding: 0 0.3em 0 0.3em;
                 margin: 0;
                 display: inline-block;
-                border-right: 1px solid #e07a5f;
+                border-right: 1px solid @base-blue;
 
                 a, a:link, a:focus, a:active, a:visited{
-                    color: #3d405b;
+                    color: @font-main;
                     text-decoration: none;
                     &:hover{
-                        color: #e07a5f;
+                        color: @base-red;
                     }
                 }
             }
@@ -41,7 +42,7 @@ body{
         width: 100%;
         padding: 0.5em 0;
         margin: 0;
-        background: #f7e3c1;
+        background: @base-white;
         &>h1, &>h2{
             font-family: 'Oswald', sans-serif;
             line-height: 0.7em;
@@ -61,12 +62,16 @@ body{
         margin: 0 auto;
         display: block;
         border-top: 1px;
-        border-bottom: 1px;
-        border-left: 0px;
-        border-right: 0px;
-        border-style: solid;
-        border-color: #f0c2b6;
-        background: #f4d5a3;
+        background: @base-blue;
+        #new-post{
+            color: @base-red;
+            &:visited{
+                color: @base-red;
+            }
+            &:hover{
+                color: @font-main;
+            }
+        }
         section{
             display: inline-block;
             width: 50%;
@@ -102,6 +107,12 @@ body{
                     }
                 }
             }
-        } 
+        }
+
+    }
+    hr{
+        margin: 1em 0;
+        padding: 1em;
+        background: @base-blue;
     }
 }

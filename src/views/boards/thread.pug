@@ -10,22 +10,55 @@ html(lang="en")
         script(src="../../../bower_components/jquery/dist/jquery.min.js")
         script(src="../../../externals/jquery-ui.min.js")
         script(src="../../../bower_components/jquery-form/jquery.form.js")
+
         title MessageBoard
     body
         include ../partials/headview.pug
-        include ../partials/postform.pug
+        div#thread-view
+            include ../partials/postform.pug
+            section.thread-view
+                section.thread#body(data-bind="foreach: posts")
+                    article(data-bind="css: parentId ? '': 'root-post', attr:{id: id, name: id}")
+                        header
+                            span.user-name UserName 
+                            span(data-bind="text: timestamp") 
+                            span  Post: 
+                            span(data-bind="text: id")
+                            span    
+                            a.reply-link(data-bind="attr: {href: '#'+id()}")  [Reply]
+                        section.body
+                            section.image(data-bind="visible: imageId")
+                                //- a(data-bind="attr: {href: '../../../resources/images/'+image_id+'.'+image_ext}, text: image_name")
+                                img(data-bind="attr: {src: '../../../resources/images/'+imageLink()}")
+                            section.text(data-bind="html: text")
+                        
+    script(src="../../../bower_components/requirejs/require.js")
+    script(src="../../../build/require-config.js")
+    script(src="../../../build/init.js")
+    script.
+        var threads;
+        var tvm;
+        var ko;
+        var currentBoard;
+        require(["knockout", "thread", "board"], function(ko, thread, board){
+            tvm = new thread["ThreadViewModel"]();
+            currentBoard = new board["BoardViewModel"]("Tech", "Technology and IT");
+            $.ajax({
+                url: cleanUrl(url,"/thread.json"),
+                type: "get",
+                dataType: "text",
+                context: tvm,
+                success: tvm.addPosts
+            });
+            $.ajax({
+                url: cleanUrl(url,"/boardList.json"),
+                type: "get",
+                dataType: "text",
+                context: currentBoard,
+                success: currentBoard.addBoardsList
+            });
+            
+            ko.applyBindings(tvm, $("#thread-view")[0]);
+            ko.applyBindings(currentBoard, $("#head-view")[0]);
+        });
 
-        script(src="../../../bower_components/requirejs/require.js")
-        script(src="../../../build/require-config.js")
-        script.
-            require(["../../../build/viewmodels/boards/thread"]);
-            $("#draggable-message-form").draggable({containment: "body"});
-            let urlTo = window.content.location.href + "/message";
-            console.log(urlTo);
-            $(".message-form")
-                .ajaxForm({
-                    url: urlTo, 
-                    type: "post",
-                    context: this,
-                    data: $(this).serialize()
-                });

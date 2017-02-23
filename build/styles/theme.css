@@ -8,14 +8,15 @@ section.thread article {
   display: block;
   width: 75%;
   max-width: 80em;
+  min-height: 4em;
 }
 section.thread article header {
-  display: inline-block;
+  display: block;
   width: 40%;
   height: 1.5em;
 }
 section.thread article header span.user-name {
-  color: #81b29a;
+  color: #67BCDB;
   font-weight: bold;
 }
 section.thread article section.body section.image {
@@ -32,16 +33,24 @@ section.thread article section.body section.image img {
   height: auto;
 }
 section.thread article:not(.root-post) {
-  background: #f7e3c1;
   margin-left: 0.5em;
   padding: 0.15em 0.15em 0.3em 0.15em;
   border-right: 1px;
   border-bottom: 1px;
   border-top: 0px;
   border-bottom: 0px;
-  border-color: #f0c2b6;
+  border-color: #E44424;
   border-style: solid;
   margin-bottom: 0.5em;
+}
+section.thread article:not(.root-post):nth-of-type(1n) {
+  border-color: #67BCDB;
+}
+section.thread article:not(.root-post):nth-of-type(2n) {
+  border-color: #E44424;
+}
+section.thread article:not(.root-post):nth-of-type(3n) {
+  border-color: #A2AB58;
 }
 section.thread article:not(.root-post) section.body {
   display: inline-flex;
@@ -69,46 +78,48 @@ section.thread article.root-post section.body section.text {
   max-width: 70em;
 }
 form.message-form {
-  display: block;
+  background: #67BCDB;
+  display: none;
   min-width: 10em;
   width: auto;
   max-width: 45em;
   min-height: 10em;
   height: auto;
   max-height: 100%;
-  position: absolute;
-  background: #dcba82;
+  position: fixed;
   z-index: 9999;
-  left: 75%;
+  left: 60%;
   top: 25%;
   cursor: move;
+  border-radius: 0.2em 0.2em 0 0;
   -webkit-box-shadow: 10px 10px 28px 11px rgba(0, 0, 0, 0.07);
   -moz-box-shadow: 10px 10px 28px 11px rgba(0, 0, 0, 0.07);
   box-shadow: 10px 10px 28px 11px rgba(0, 0, 0, 0.07);
 }
+form.message-form input.hidden-input {
+  display: none;
+}
 form.message-form fieldset {
+  background: #FFFFFF;
   display: block;
   width: 95%;
   height: 90%;
   min-height: 8em;
-  padding: 0;
-  border: 1px solid #f4f1de;
-  background: #f9e7cc;
+  padding: 0.2em 0 0 0;
+  border: none;
 }
 form.message-form fieldset legend {
-  background: #f9e7cc;
   margin-left: 0.5em;
   color: #3d405b;
-  border: 1px solid #f4f1de;
+  background: #FFFFFF;
 }
 form.message-form fieldset textarea {
   cursor: auto;
   display: block;
-  max-width: 97%;
-  width: 97%;
-  max-height: 98%;
-  min-width: 97%;
-  min-height: 98%;
+  min-width: 20em;
+  width: 25em;
+  min-height: 10em;
+  height: 15em;
 }
 form.message-form fieldset input {
   cursor: auto;
@@ -119,16 +130,49 @@ form.message-form fieldset input {
   min-height: 1.2em;
 }
 form.message-form > input {
+  margin-right: 0.1em;
   cursor: auto;
-  right: 0px;
+  display: block;
+  float: right;
+  position: relative;
+  background: #E44424;
+  background-image: linear-gradient(to bottom, #E44424, #b8402b);
+  border-radius: 0.1em;
+  color: #ffffff;
+  font-size: 1.05em;
+  padding: 0.2em 0.4em;
+  border: 0;
+  text-decoration: none;
+}
+form.message-form > input:hover {
+  background: #A2AB58;
+}
+form.message-form > button {
+  margin-left: 0.1em;
+  cursor: auto;
+  display: block;
+  float: left;
+  position: relative;
+  background: #E44424;
+  background-image: linear-gradient(to bottom, #E44424, #b8402b);
+  border-radius: 0.1em;
+  color: #ffffff;
+  font-size: 1.05em;
+  padding: 0.2em 0.4em;
+  border: 0;
+  text-decoration: none;
+}
+form.message-form > button:hover {
+  background: #A2AB58;
 }
 body {
+  scroll-behavior: smooth;
   width: 100%;
   height: 100%;
   display: block;
   padding: 0;
   margin: 0;
-  background: #f4f1de;
+  background: #FFFFFF;
   font-size: 16px;
   font-family: 'Arimo', sans-serif;
 }
@@ -136,8 +180,7 @@ body nav.boards-nav {
   display: block;
   width: 100%;
   height: auto;
-  color: #e07a5f;
-  background: #f9e7cc;
+  background: #FFFFFF;
 }
 body nav.boards-nav ul {
   list-style: none;
@@ -149,7 +192,7 @@ body nav.boards-nav ul li {
   padding: 0 0.3em 0 0.3em;
   margin: 0;
   display: inline-block;
-  border-right: 1px solid #e07a5f;
+  border-right: 1px solid #67BCDB;
 }
 body nav.boards-nav ul li a,
 body nav.boards-nav ul li a:link,
@@ -164,14 +207,14 @@ body nav.boards-nav ul li a:link:hover,
 body nav.boards-nav ul li a:focus:hover,
 body nav.boards-nav ul li a:active:hover,
 body nav.boards-nav ul li a:visited:hover {
-  color: #e07a5f;
+  color: #E44424;
 }
 body section#board-header {
   display: block;
   width: 100%;
   padding: 0.5em 0;
   margin: 0;
-  background: #f7e3c1;
+  background: #FFFFFF;
 }
 body section#board-header > h1,
 body section#board-header > h2 {
@@ -191,12 +234,16 @@ body section#basic-actions {
   margin: 0 auto;
   display: block;
   border-top: 1px;
-  border-bottom: 1px;
-  border-left: 0px;
-  border-right: 0px;
-  border-style: solid;
-  border-color: #f0c2b6;
-  background: #f4d5a3;
+  background: #67BCDB;
+}
+body section#basic-actions #new-post {
+  color: #E44424;
+}
+body section#basic-actions #new-post:visited {
+  color: #E44424;
+}
+body section#basic-actions #new-post:hover {
+  color: #3d405b;
 }
 body section#basic-actions section {
   display: inline-block;
@@ -233,4 +280,9 @@ body section#basic-actions section form input.search {
 }
 body section#basic-actions section form input.submit {
   height: 2.2em;
+}
+body hr {
+  margin: 1em 0;
+  padding: 1em;
+  background: #67BCDB;
 }
